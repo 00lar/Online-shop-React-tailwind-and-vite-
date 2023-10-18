@@ -10,11 +10,11 @@ import { NavBar } from '../../components/navbar'
 
 const AppRoutes = () => {
   let routes = useRoutes([
-    {path:"/",element:<Home />},
-    {path:"/My-Account",element:<MyAccount />},
-    {path:"/My-Order",element:<MyOrder />},
-    {path:"/My-Orders",element:<MyOrders />},
-    {path:"/SignIn",element:<SignIn />},
+    {path:"/",element:<Home/>},
+    {path:"/My-Account",element:<MyAccount/>},
+    {path:"/My-Order",element:<MyOrder/>},
+    {path:"/My-Orders",element:<MyOrders/>},
+    {path:"/SignIn",element:<SignIn/>},
     {path:"/*",element:<NotFound />}
   ])
   return routes
