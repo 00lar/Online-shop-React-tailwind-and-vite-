@@ -29,7 +29,6 @@ function App() {
         <NavBar></NavBar>
       </BrowserRouter>
     </ShoppingCartProvider>
-
   )
 }
 
