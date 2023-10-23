@@ -5,6 +5,10 @@ import { AddIcon } from "../Icons"
 const Card = (data) => {
     const context = useContext(ShoppingCartContext)
 
+    const addProductsToCart = (productData) => {
+        context.setCartProducts([...context.cartProducts, data.data])
+    }
+
     const showProduct = (productDetail) => {
         context.openProductDetail()
         context.setProductToShow(productDetail)
@@ -23,6 +27,7 @@ const Card = (data) => {
                         context.setCount(context.count+1)
                         context.openCheckoutSideMenu()
                         context.closeProductDetail()
+                        addProductsToCart(data.data)
                     }
                     }
                     >

@@ -1,6 +1,7 @@
 import { Xicon } from "../Icons"
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
+import { OrderCard } from "../OrderCard"
 
 const CheckoutSideMenu = () => {
     const context = useContext(ShoppingCartContext)
@@ -15,6 +16,19 @@ return (
                 <Xicon/>
             </div>
         </div>
+        <div className='px-6'>
+        {
+          context.cartProducts.map(product => (
+            <OrderCard
+              key={product.id}
+              title={product.title}
+              imageUrl={product.images}
+              price={product.price}
+            />
+          ))
+        }
+      </div>
+
     </aside>
 )
 

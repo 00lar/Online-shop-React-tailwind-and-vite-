@@ -24,6 +24,8 @@ export const ShoppingCartProvider = ({children}) => {
     images: [],
   })
 
+  const [cartProducts, setCartProducts] = useState([])
+
 
     return (
         <ShoppingCartContext.Provider
@@ -38,7 +40,9 @@ export const ShoppingCartProvider = ({children}) => {
             isCheckoutSideMenuOpen,
             setIsCheckoutSideMenuOpen,
             openCheckoutSideMenu,
-            closeCheckoutSideMenu
+            closeCheckoutSideMenu,
+            cartProducts,
+            setCartProducts
             }}
         >
             {children}
