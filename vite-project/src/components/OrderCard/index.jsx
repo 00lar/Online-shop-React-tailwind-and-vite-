@@ -13,7 +13,7 @@ const OrderCard = props => {
             </div>
 
             <div className="flex items-center gap-2">
-                <p  className="text-lg font-medium">{price}</p>
+                <p  className="text-lg font-medium">${price}</p>
                 <div 
                     className="cursor-pointer"
                     onClick={() => handleDelete(id)}>

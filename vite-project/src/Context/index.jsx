@@ -16,6 +16,7 @@ export const ShoppingCartProvider = ({children}) => {
   const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
 
+  
 
   const [productToShow, setProductToShow] = useState({
     title: "",
