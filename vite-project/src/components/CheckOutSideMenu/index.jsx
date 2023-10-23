@@ -11,8 +11,20 @@ const CheckoutSideMenu = () => {
     const handleDelete = (id) => {
         const filteredProducts = context.cartProducts.filter(product => product.id !== id)
         context.setCartProducts(filteredProducts)
-        console.log("Hola")
+        context.setCount(context.count-1)
       }
+
+    const handleCheckout = () => {  
+        const orderToAdd = {
+            date: "01.02.23",
+            products: context.cartProducts,
+            totalProducts: context.cartProducts.length,
+            totalPrice: totalPrice(context.cartProducts)
+        }
+        context.setOrder([...context.order, orderToAdd])
+        context.setCartProducts([])
+        context.setCount(0)
+    }
 
 
 
@@ -27,7 +39,7 @@ return (
             </div>
         </div>
 
-        <div className='px-6'>
+        <div className='px-6 flex-1'>
             {
             context.cartProducts.map(product => (
                 <OrderCard
@@ -41,11 +53,14 @@ return (
             ))
             }
         </div>
-        <div className=" px-6">
-            <p className="flex justify-between items-center">
+        <div className=" px-6 mb-6">
+            <p className="flex justify-between items-center mb-2">
                 <span className="font-light">Total:</span>
                 <span className="font-medium text-2xl">${totalPrice(context.cartProducts)}</span>
             </p>
+            <button
+            className=" w-full bg-black py-3 text-white rounded-lg "
+             onClick={() => handleCheckout()}>Checkout</button>
         </div>
     </aside>
 )
