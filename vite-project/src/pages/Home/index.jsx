@@ -4,6 +4,7 @@ import { Card } from "../../components/card"
 import { useEffect } from "react";
 import { apiurl } from "../../api";
 import { ProductDetail } from "../../components/ProductDetail";
+import { CheckoutSideMenu } from "../../components/CheckOutSideMenu";
 
 function Home() {
   const [items,setItems] = useState(null);

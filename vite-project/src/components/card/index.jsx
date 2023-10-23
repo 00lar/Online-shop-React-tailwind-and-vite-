@@ -20,7 +20,11 @@ const Card = (data) => {
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 m-2 rounded-full p-1"
                     onClick={(e)=>{
                         e.stopPropagation()
-                        context.setCount(context.count+1)}}
+                        context.setCount(context.count+1)
+                        context.openCheckoutSideMenu()
+                        context.closeProductDetail()
+                    }
+                    }
                     >
                     <AddIcon></AddIcon>
                 </div>
