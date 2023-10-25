@@ -2,6 +2,10 @@ import { Xicon } from "../Icons"
 
 const OrderCard = props => {
     const {id,title,imageUrl,price,handleDelete} = props
+    let renderXIcon
+    if(handleDelete) {
+        renderXIcon = <Xicon/>
+    }
     
     return(
         <div  className="flex justify-between items-center mb-3">
@@ -17,8 +21,9 @@ const OrderCard = props => {
                 <div 
                     className="cursor-pointer"
                     onClick={() => handleDelete(id)}>
-                    <Xicon ></Xicon>
+                        {renderXIcon}
                 </div>
+                
             </div>
 
         </div>
