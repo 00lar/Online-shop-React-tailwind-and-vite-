@@ -13,7 +13,7 @@ function MyOrder() {
 
   return (
       <Layout>
-        <div className="flex items-center justify-center w-80 relative mb-2">
+        <div className="flex items-center justify-center w-80 relative mb-2  ">
           <Link to={"/My-orders"} className="absolute left-0">
             <ArrowLeftIcon/>
           </Link>
