@@ -1,4 +1,12 @@
-import {XCircleIcon,ShoppingBagIcon,PlusIcon,CheckBadgeIcon} from "@heroicons/react/24/solid"
+import {XCircleIcon,ShoppingBagIcon,PlusIcon,CheckBadgeIcon,ArrowLeftCircleIcon} from "@heroicons/react/24/solid"
+
+const ArrowLeftIcon = () => {
+    return (
+        <ArrowLeftCircleIcon
+        className="h-6 w-6 text-gray-500"
+        />
+    )
+}
 
 const Xicon = () => {
     return ( 
@@ -32,4 +40,4 @@ const AddIcon = () => {
     )
 }
 
-export {Xicon, BagIcon, AddIcon, CheckIcon }
+export {Xicon, BagIcon, AddIcon, CheckIcon, ArrowLeftIcon }

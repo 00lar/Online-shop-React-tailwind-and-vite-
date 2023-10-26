@@ -1,13 +1,28 @@
 import { Layout } from "../../components/Layout"
-
+import { OrdersCard } from "../../components/OrdersCard"
+import { useContext } from "react"
+import { ShoppingCartContext } from "../../Context"
+import { Link } from "react-router-dom"
+import { Xicon, ArrowLeftIcon } from "../../components/Icons"
 
 function MyOrders() {
+const context = useContext(ShoppingCartContext)
+
   return (
-    <div className=' bg-red-500'>
       <Layout>
-        MyOrders
+        <div className="flex items-center justify-center w-80 relative">
+          <h1>My Orders</h1>
+        </div>
+        {context.order.map((order,index)=> {
+          <Link key={index} to={`/my-orders/${order.id}`}>
+                <OrdersCard
+                totalPrice={order.totalPrice}
+                totalProducts={order.totalProducts}
+                ></OrdersCard>
+          </Link>
+      })
+      }
       </Layout>
-    </div>
   )
   }
 
