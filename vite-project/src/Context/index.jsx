@@ -1,10 +1,30 @@
-import { useState } from "react";
-import { createContext } from "react";
+import { useState, useContext, useEffect ,createContext } from "react";
+import { apiurl } from "../api";
 
 const ShoppingCartContext = createContext();
 
 export const ShoppingCartProvider = ({children}) => {
     const [count, setCount] = useState(0)
+
+  //get Products
+  const [items,setItems] = useState(null); 
+
+  //Get Product By Title
+  const [searchByTitle, setSearchByTitle] = useState(null) 
+
+  useEffect(()=> {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${apiurl}/products`)
+        const data = await res.json()
+        setItems(data)
+      } catch (error) {
+        console.log(error)
+      }
+    } 
+    fetchData()
+  },[])
+
 
     //product Detail - Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
@@ -46,7 +66,10 @@ export const ShoppingCartProvider = ({children}) => {
             cartProducts,
             setCartProducts,
             order,
-            setOrder
+            setOrder,
+            items,
+            setItems,
+            searchByTitle,
             }}
         >
             {children}
