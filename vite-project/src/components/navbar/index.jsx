@@ -21,13 +21,16 @@ const NavBar = () => {
                     to="/"
                     className={({isActive}) =>
                         isActive ? activeStyle : undefined 
-                    }>
+                    }
+                    onClick={() => context.setSearchByCategory()}
+                    >
                         All
                     </NavLink>
                 </li>
                 <li>
                 <NavLink
                     to="/clothes"
+                    onClick={() => context.setSearchByCategory("clothes")}
                     className={({isActive}) =>
                     isActive ? activeStyle : undefined 
                 }>
@@ -36,7 +39,8 @@ const NavBar = () => {
                 </li>
                 <li>
                 <NavLink
-                    to="/Electronics"
+                    to="electronics"
+                    onClick={() => context.setSearchByCategory("electronics")}
                     className={({isActive}) =>
                     isActive ? activeStyle : undefined 
                 }>
@@ -45,7 +49,8 @@ const NavBar = () => {
                 </li>
                 <li>
                 <NavLink
-                    to="/Furnitures"
+                    to="furnitures"
+                    onClick={() => context.setSearchByCategory("furnitures")}
                     className={({isActive}) =>
                     isActive ? activeStyle : undefined 
                 }>
@@ -54,7 +59,8 @@ const NavBar = () => {
                 </li>
                 <li>
                 <NavLink
-                    to="/Toys"
+                    to="/toys"
+                    onClick={() => context.setSearchByCategory("toys")}
                     className={({isActive}) =>
                     isActive ? activeStyle : undefined 
                 }>
@@ -63,7 +69,8 @@ const NavBar = () => {
                 </li>
                 <li>
                 <NavLink
-                    to="/Others"
+                    to="/others"
+                    onClick={() => context.setSearchByCategory("others")}
                     className={({isActive}) =>
                     isActive ? activeStyle : undefined 
                 }>

@@ -9,9 +9,11 @@ export const ShoppingCartProvider = ({children}) => {
   //get Products
   const [items,setItems] = useState(null); 
 
-  //Get Product By Title
+   //Get Product By Title
   const [searchByTitle, setSearchByTitle] = useState(null) 
-  const [filteredItems, setFilteredItems] = useState(null)
+   //Get Products by Category
+   const [searchByCategory, setSearchByCategory] = useState(null) 
+
 
   useEffect(()=> {
     const fetchData = async () => {
@@ -26,15 +28,51 @@ export const ShoppingCartProvider = ({children}) => {
     fetchData()
   },[])
 
-  const filteredItemsByTitle = (items,searchByTitle) => {
+
+  
+  const [filteredItems, setFilteredItems] = useState(null)
+
+  const filteredItemsByTitle = (items, searchByTitle) => {
     return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
   }
 
-  useEffect(() => {
-    if(searchByTitle) {
-      setFilteredItems(filteredItemsByTitle(items,searchByTitle))
+
+ 
+
+
+
+  const filteredItemsByCategory = (items, searchByCategory) => {
+    return items?.filter(item => item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()))
+  }
+
+  const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
+    if (searchType === 'BY_TITLE') {
+      return filteredItemsByTitle(items, searchByTitle)
     }
-  },[items,searchByTitle])
+
+    if (searchType === 'BY_CATEGORY') {
+      return filteredItemsByCategory(items, searchByCategory)
+    }
+
+    if (searchType === 'BY_TITLE_AND_CATEGORY') {
+      return filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+    }
+
+    if (!searchType) {
+      return items
+    }
+  }
+
+  
+
+ useEffect(() => {
+    if (searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory))
+    if (searchByTitle && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
+    if (!searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
+    if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
+  }, [items, searchByTitle, searchByCategory])
+
+
     //product Detail - Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
   const openProductDetail = () => setIsProductDetailOpen(true)
@@ -80,7 +118,9 @@ export const ShoppingCartProvider = ({children}) => {
             setItems,
             searchByTitle,
             setSearchByTitle,
-            filteredItems
+            filteredItems,
+            setSearchByCategory,
+            searchByCategory,
             }}
         >
             {children}
